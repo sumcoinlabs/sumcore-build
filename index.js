@@ -293,7 +293,7 @@ function startGulp(name, opts) {
   });
 
   gulp.task('release:push', function(cb) {
-    git.push('litecoin-project', 'master', {
+    git.push('sumcoinlabs', 'master', {
       args: ''
     }, cb);
   });
@@ -302,7 +302,7 @@ function startGulp(name, opts) {
     var pjson = require('../../package.json');
     var name = 'v' + pjson.version;
     git.tag(name, 'Release ' + name, function() {
-      git.push('litecoin-project', name, cb);
+      git.push('sumcoinlabs', name, cb);
     });
   });
 
@@ -327,7 +327,7 @@ function startGulp(name, opts) {
       browser ? 'browser' : 'noop',
       // Commit 
       'release:build-commit',
-      // Run git push litecoin-project $VERSION
+      // Run git push sumcoinlabs $VERSION
       'release:push-tag',
       // Run npm publish
       'release:publish',
